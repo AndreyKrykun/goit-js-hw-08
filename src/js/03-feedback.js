@@ -21,7 +21,7 @@ refs.textarea.value = formData.message;
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.input.addEventListener('input', throttle(onEmailInput, 500));
-refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
+refs.textarea.addEventListener('input', throttle(onMesssageInput, 500));
 
 
 function onFormSubmit(event) {
@@ -35,7 +35,8 @@ function onEmailInput(event) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
-function onTextareaInput(event) {
+function onMesssageInput(event) {
     formData.message = event.target.value;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
+
