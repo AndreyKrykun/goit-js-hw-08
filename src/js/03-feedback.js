@@ -20,8 +20,7 @@ refs.input.value = formData.email;
 refs.textarea.value = formData.message;
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.input.addEventListener('input', throttle(onEmailInput, 500));
-refs.textarea.addEventListener('input', throttle(onMesssageInput, 500));
+refs.form.addEventListener('input', throttle(handleChange, 500));
 
 
 function onFormSubmit(event) {
@@ -30,13 +29,8 @@ function onFormSubmit(event) {
     localStorage.removeItem(STORAGE_KEY);
 }
 
-function onEmailInput(event) {
-    formData.email = event.target.value;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-}
-
-function onMesssageInput(event) {
-    formData.message = event.target.value;
+function handleChange(event) {
+    formData[event.target.name] = event.target.value;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
